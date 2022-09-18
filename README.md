@@ -5,7 +5,7 @@ Content:
 3) 
 The PSU consists of three programmable microchips -> three firmware's. The Main controller (MC) and two communictaion controllers (CC's). The CC's are the interface between the MC and the OBC. The MC is connected to both CC's and communicates via UART. The CC's communicate with the OBC via I2C (OBC -> Master, CC's -> Slaves). The MC collects housekeeping data by communicating with all sensors  via I2C. 
 
-1) Firmware Main Controller (MC):
+(1) Firmware Main Controller (MC):
 
 The firmware of the main controller is responsible for:
 - Converting the power on the PV1 and PV2 bus to 3V3 and 5V.
