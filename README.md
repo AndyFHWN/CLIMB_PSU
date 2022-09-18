@@ -33,29 +33,29 @@ Example of an Arduino sketch used to read out the datavector:
   CC2_address = 0xAA;
   datavector_reg_numb = 5;
   
-  Wire.beginTransmission(CC2_address);    //prepares data transmission to given adress
-  Wire.write(datavector_reg_numb);        //saves value/data to the send buffer
-  Wire.endTransmission();                 //send what is saved in buffer
-  Wire.requestFrom((int)(CC2_addr), 1);   //Requests the specified number of bytes from the specified device
-  datavector = Wire.read();               //reads vaule/data from receive buffer
+ - Wire.beginTransmission(CC2_address);    //prepares data transmission to given adress
+ - Wire.write(datavector_reg_numb);        //saves value/data to the send buffer
+ - Wire.endTransmission();                 //send what is saved in buffer
+ - Wire.requestFrom((int)(CC2_addr), 1);   //Requests the specified number of bytes from the specified device
+ - datavector = Wire.read();               //reads vaule/data from receive buffer
   
   The variable "datavector" contains now the 5th byte of the received data vector from CC2.
 
 Strucutre of the data vector that is send to the OBC:
 In flight mode the MC creates a data vector with all housekeeping data which is frequently send to the CC1/2 and then further to the OBC. The data vector is created in the function "void CreateDataVector(uint8_t *dataVector)" which is implmented in the file "CCinterface.c".
 The vector is created in firmware of the MC and is structred as follows:
-dataVector[0] = '$';
-dataVector[1] = 'D';
-	// 5V VI data
-	dataVector[2] = 'P'; //global_5V.i1Low;
-	dataVector[3] = global_5V.i1High;
-	dataVector[4] = global_5V.i2Low;
-	dataVector[5] = global_5V.i2High;
-	dataVector[6] = global_5V.v1Low;
-	dataVector[7] = global_5V.v1High;
-	dataVector[8] = global_5V.v2Low;
-	dataVector[9] = global_5V.v2High;
-	// 3V3 VI data
+- dataVector[0] = '$';
+- dataVector[1] = 'D';
+- // 5V VI data
+- dataVector[2] = 'P'; //global_5V.i1Low;
+- dataVector[3] = global_5V.i1High;
+- dataVector[4] = global_5V.i2Low;
+- dataVector[5] = global_5V.i2High;
+- dataVector[6] = global_5V.v1Low;
+- dataVector[7] = global_5V.v1High;
+- dataVector[8] = global_5V.v2Low;
+- dataVector[9] = global_5V.v2High;
+- // 3V3 VI data
 	dataVector[10] = global_3V3.i1Low;
 	dataVector[11] = global_3V3.i1High;
 	dataVector[12] = global_3V3.i2Low;
