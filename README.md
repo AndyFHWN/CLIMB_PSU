@@ -143,7 +143,6 @@ main.h:
 - #define new_data_flag   data[87]  //if new data from OBC received since last com. with MC 1, else 0.
 
 uart.c:
-
 - data[56]=uart_string_R[58];						//VCC CC1
 - data[57]=uart_string_R[59];						//temperature of CC1
 - data[60]=uart_string_R[62];						//status CC1
