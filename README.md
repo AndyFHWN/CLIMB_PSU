@@ -2,8 +2,8 @@
 Content:
 1) Firmware Main Controller (MC)
 2) Firmware Communication Controller 1/2 (CC1/2)
-3) How to receive data vector from CC1/2
-4) Strucutre of the data vector that is send to the OBC
+3) How to receive data vector from CC1/2 that is send to OBC
+4) Strucutre of the data vector
 
 The PSU consists of three programmable microchips -> three firmware's. The Main controller (MC) and two communictaion controllers (CC's). The CC's are the interface between the MC and the OBC. The MC is connected to both CC's and communicates via UART. The CC's communicate with the OBC via I2C (OBC -> Master, CC's -> Slaves). The MC collects housekeeping data by communicating with all sensors  via I2C. 
 
@@ -34,7 +34,7 @@ Difference between CC1 and CC2:
 - CC1 also holds a safe mode which is active if the MC is not available. Not sure if also implemented on CC2?
 - CC1 also holds a communication with TT&C but this was only implemented for PEGASUS and is not used for Climb.
 
-(3) How to receive data vector from CC1/2:
+(3) How to receive data vector from CC1/2 that is send to OBC:
 
 For the connection to the CC's, there are pins on the PSU for SDA and SCL for both CC's:
 
