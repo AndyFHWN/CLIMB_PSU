@@ -131,7 +131,8 @@ The vector is created in firmware of the MC and is structred as follows:
 - dataVector[68] = dataVector[0];
 
 This data vector with the size of 69 byte is send to the CC1/2. In the firmware of ht CC1/2 the vector is extended to the size of 88 byte and filled with data from CC1/2. In the firmware of CC2 the data vector is extaded as follows:
-The dataVector from the MC is received from CC2 via UART byte per byte and saved in a new vector called "data". 
+The dataVector from the MC is received from CC2 via UART byte per byte and saved in a new vector called "data".
+
 main.h:
 - #define rb_ct           data[55]  //reboot counter of
 - #define VCC             data[58]	//supply voltage Vcc
@@ -139,8 +140,10 @@ main.h:
 - #define status          data[61]  //status of CC2
 - #define FOVR            data[81]  //force output value register
 - #define OVR             data[82]  //output value register
-- #define new_data_flag   data[87]  //if new data from OBC received since last com. with MC 1, else 0
+- #define new_data_flag   data[87]  //if new data from OBC received since last com. with MC 1, else 0.
+
 uart.c:
+
 - data[56]=uart_string_R[58];						//VCC CC1
 - data[57]=uart_string_R[59];						//temperature of CC1
 - data[60]=uart_string_R[62];						//status CC1
