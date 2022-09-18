@@ -46,7 +46,7 @@ CC2:
  - side x+/A pin 17: SCL2
  - side x+/A pin 18: SDA2
 
-The adress of CC1 is 0x55 and the adress of CC2 is 0xAA. To receive the data vector from CC1/2 one has to send the adress of one of the CC and then the register number of the data vector. The strucure of the data vector is shown at the end of the README.
+The adress of CC1 is 0x55 and the adress of CC2 is 0xAA. To receive the data vector from CC1/2 one has to send the adress of one of the CC and then the register number of the data vector. The strucure of the data vector is shown at the end of the README. The relevant section in the firmware for I2C communiction for CC1 is in the file "InterruptVector_init.c" beginning from line 836 and for CC2 'twi.c" from line 27 on.
 
 Example of an Arduino sketch used to read out the datavector:  
   CC2_address = 0xAA;
