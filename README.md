@@ -56,98 +56,98 @@ The vector is created in firmware of the MC and is structred as follows:
 - dataVector[8] = global_5V.v2Low;
 - dataVector[9] = global_5V.v2High;
 - // 3V3 VI data
-	dataVector[10] = global_3V3.i1Low;
-	dataVector[11] = global_3V3.i1High;
-	dataVector[12] = global_3V3.i2Low;
-	dataVector[13] = global_3V3.i2High;
-	dataVector[14] = global_3V3.v1Low;
-	dataVector[15] = global_3V3.v1High;
-	dataVector[16] = global_3V3.v2Low;
-	dataVector[17] = global_3V3.v2High;
-	// edge temperature
-	dataVector[18] = global_tEdge.tempLow;
-	dataVector[19] = global_tEdge.tempHigh;
-	// center temperature
-	dataVector[20] = global_tCenter.tempLow;
-	dataVector[21] = global_tCenter.tempHigh;
-	// HV VI data
-	dataVector[22] = global_HV.i1Low;
-	dataVector[23] = global_HV.i1High;
-	dataVector[24] = global_HV.i2Low;
-	dataVector[25] = global_HV.i2High;
-	dataVector[26] = global_HV.v1Low;
-	dataVector[27] = global_HV.v1High;
-	dataVector[28] = global_HV.v2Low;
-	dataVector[29] = global_HV.v2High;
-	// battery 1 VI data
-	dataVector[30] = global_viBat1.i1Low;
-	dataVector[31] = global_viBat1.i1High;
-	dataVector[32] = global_viBat1.i2Low;
-	dataVector[33] = global_viBat1.i2High;
-	dataVector[34] = global_viBat1.v1Low;
-	dataVector[35] = global_viBat1.v1High;
-	dataVector[36] = global_viBat1.v2Low;
-	dataVector[37] = global_viBat1.v2High;
-	// battery 2 VI data
-	dataVector[38] = global_viBat2.i1Low;
-	dataVector[39] = global_viBat2.i1High;
-	dataVector[40] = global_viBat2.i2Low;
-	dataVector[41] = global_viBat2.i2High;
-	dataVector[42] = global_viBat2.v1Low;
-	dataVector[43] = global_viBat2.v1High;
-	dataVector[44] = global_viBat2.v2Low;
-	dataVector[45] = global_viBat2.v2High;
-	// battery 1 temperature
-	dataVector[46] = global_tBat1.tempLow;
-	dataVector[47] = global_tBat1.tempHigh;
-	// battery 2 temperature
-	dataVector[48] = global_tBat2.tempLow;
-	dataVector[49] = global_tBat2.tempHigh;
-	// status registers (not correctly implemented yet)
-	dataVector[50] = GetEEStatus1();
-	dataVector[51] = GetEEStatus2();
-	dataVector[52] = GetEEStatus3();
-	// estimated capacity battery 1 and 2 (not implemented yet)
-	dataVector[53] = 0x01;
-	dataVector[54] = 0x02;
-	// number of reboots MC, CC1 and CC2 (not implemented yet)
-	dataVector[55] = GetEERebootCount();
-	dataVector[56] = 0x01;
-	dataVector[57] = 0x02;
-	// VCC_CC1, TEMP_CC1, VCC_CC2, TEMP_CC2 (not implemented yet)
-	dataVector[58] = 0x01;
-	dataVector[59] = 0x01;
-	dataVector[60] = 0x02;
-	dataVector[61] = 0x02;
-	// status CC1, CC2 (not implemented yet)
-	dataVector[62] = 0x01;
-	dataVector[63] = 0x02;
-	// TBD, TBD, CCx FOVR, CCx OVR (not implemented yet)
-	dataVector[64] = 0x33;
-	dataVector[65] = 0x33;
-	dataVector[66] = 0x33;
-	dataVector[67] = 0x33;
-	// checksum of byte 0 to 65 via XOR
-	dataVector[68] = dataVector[0];
+- dataVector[10] = global_3V3.i1Low;
+- dataVector[11] = global_3V3.i1High;
+- dataVector[12] = global_3V3.i2Low;
+- dataVector[13] = global_3V3.i2High;
+- dataVector[14] = global_3V3.v1Low;
+- dataVector[15] = global_3V3.v1High;
+- dataVector[16] = global_3V3.v2Low;
+- dataVector[17] = global_3V3.v2High;
+- // edge temperature
+- dataVector[18] = global_tEdge.tempLow;
+- dataVector[19] = global_tEdge.tempHigh;
+- // center temperature
+- dataVector[20] = global_tCenter.tempLow;
+- dataVector[21] = global_tCenter.tempHigh;
+- // HV VI data
+- dataVector[22] = global_HV.i1Low;
+- dataVector[23] = global_HV.i1High;
+- dataVector[24] = global_HV.i2Low;
+- dataVector[25] = global_HV.i2High;
+- dataVector[26] = global_HV.v1Low;
+- dataVector[27] = global_HV.v1High;
+- dataVector[28] = global_HV.v2Low;
+- dataVector[29] = global_HV.v2High;
+- // battery 1 VI data
+- dataVector[30] = global_viBat1.i1Low;
+- dataVector[31] = global_viBat1.i1High;
+- dataVector[32] = global_viBat1.i2Low;
+- dataVector[33] = global_viBat1.i2High;
+- dataVector[34] = global_viBat1.v1Low;
+- dataVector[35] = global_viBat1.v1High;
+- dataVector[36] = global_viBat1.v2Low;
+- dataVector[37] = global_viBat1.v2High;
+- // battery 2 VI data
+- dataVector[38] = global_viBat2.i1Low;
+- dataVector[39] = global_viBat2.i1High;
+- dataVector[40] = global_viBat2.i2Low;
+- dataVector[41] = global_viBat2.i2High;
+- dataVector[42] = global_viBat2.v1Low;
+- dataVector[43] = global_viBat2.v1High;
+- dataVector[44] = global_viBat2.v2Low;
+- dataVector[45] = global_viBat2.v2High;
+- // battery 1 temperature
+- dataVector[46] = global_tBat1.tempLow;
+- dataVector[47] = global_tBat1.tempHigh;
+- // battery 2 temperature
+- dataVector[48] = global_tBat2.tempLow;
+- dataVector[49] = global_tBat2.tempHigh;
+- // status registers (not correctly implemented yet)
+- dataVector[50] = GetEEStatus1();
+- dataVector[51] = GetEEStatus2();
+- dataVector[52] = GetEEStatus3();
+- // estimated capacity battery 1 and 2 (not implemented yet)
+- dataVector[53] = 0x01;
+- dataVector[54] = 0x02;
+- // number of reboots MC, CC1 and CC2 (not implemented yet)
+- dataVector[55] = GetEERebootCount();
+- dataVector[56] = 0x01;
+- dataVector[57] = 0x02;
+- // VCC_CC1, TEMP_CC1, VCC_CC2, TEMP_CC2 (not implemented yet)
+- dataVector[58] = 0x01;
+- dataVector[59] = 0x01;
+- dataVector[60] = 0x02;
+- dataVector[61] = 0x02;
+- // status CC1, CC2 (not implemented yet)
+- dataVector[62] = 0x01;
+- dataVector[63] = 0x02;
+- // TBD, TBD, CCx FOVR, CCx OVR (not implemented yet)
+- dataVector[64] = 0x33;
+- dataVector[65] = 0x33;
+- dataVector[66] = 0x33;
+- dataVector[67] = 0x33;
+- // checksum of byte 0 to 65 via XOR
+- dataVector[68] = dataVector[0];
 
 This data vector with the size of 69 byte is send to the CC1/2. In the firmware of ht CC1/2 the vector is extended to the size of 88 byte and filled with data from CC1/2. In the firmware of CC2 the data vector is extaded as follows:
 The dataVector from the MC is received from CC2 via UART byte per byte and saved in a new vector called "data". 
 main.h:
-  #define rb_ct				    data[55]		//reboot counter of
-  #define VCC					    data[58]		//supply voltage Vcc
-  #define TEMP				    data[59]		//internal temperature
-  #define status			    data[61]		//status of CC2
-  #define FOVR				    data[81]		//force output value register
-  #define OVR					    data[82]		//output value register
-  #define new_data_flag		data[87]		//if new data from OBC received since last com. with MC 1, else 0
+- #define rb_ct			data[55]		//reboot counter of
+- #define VCC			data[58]		//supply voltage Vcc
+- #define TEMP			data[59]		//internal temperature
+- #define status		data[61]		//status of CC2
+- #define FOVR			data[81]		//force output value register
+- #define OVR			data[82]		//output value register
+- #define new_data_flag		data[87]		//if new data from OBC received since last com. with MC 1, else 0
 uart.c:
-  data[56]=uart_string_R[58];						//VCC CC1
-  data[57]=uart_string_R[59];						//temperature of CC1
-  data[60]=uart_string_R[62];						//status CC1
-  //data[62]=uart_string_R[64];					//TBD
-  data[62]=0xAB;									      //ID register
-  data[63]=uart_string_R[65];						//TBD
-  data[81]=uart_string_R[66];						//CC2 FOVR
-  data[82]=uart_string_R[67];						//CC2 OVR
+- data[56]=uart_string_R[58];						//VCC CC1
+- data[57]=uart_string_R[59];						//temperature of CC1
+- data[60]=uart_string_R[62];						//status CC1
+- //data[62]=uart_string_R[64];					//TBD
+- data[62]=0xAB;									      //ID register
+- data[63]=uart_string_R[65];						//TBD
+- data[81]=uart_string_R[66];						//CC2 FOVR
+- data[82]=uart_string_R[67];						//CC2 OVR
 
 The whole new data vec tor is then send via I2C to the OBC if the I2C interrupt routine is triggered.
