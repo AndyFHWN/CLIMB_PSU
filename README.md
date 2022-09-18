@@ -1,6 +1,6 @@
 # CLIMB_PSU
 
-The PSU consists of three programmable microchips -> three firmware's. The Main controller (MC) and two communictaion controllers (CC's). The CC's are the interface between the MC and the OBC. The MC is connected to both CC's and communicates via UART. The CC's communicate with the OBC via I2C.
+The PSU consists of three programmable microchips -> three firmware's. The Main controller (MC) and two communictaion controllers (CC's). The CC's are the interface between the MC and the OBC. The MC is connected to both CC's and communicates via UART. The CC's communicate with the OBC via I2C (OBC -> Master, CC's -> Slaves). The MC collects housekeeping data by communicating with all sensors  via I2C. 
 
 Firmware Main Controller (MC):
 The firmware of the main controller is responsible for:
@@ -28,7 +28,18 @@ Difference between CC1 and CC2:
 - CC1 also holds a communication with TT&C but this was only implemented for PEGASUS and is not used for Climb.
 
 How to receive data vector from CC1/2:
-The adress of CC1 is 0x55 and the adress of CC2 is 0xAA. To receive the data vector from CC1/2 one has to send the adress of one of the CC and then the register number of the data vector. The strucure of the data vector is shown at the end of the README
+For the connection to the CC's, there are pins on the PSU for SDA and SCL for both CC's:
+
+CC1:
+ - side x-/C pin 17: SCL1
+ - side x-/C pin 18: SDA1
+ 
+CC2:
+ - side x+/A pin 17: SCL2
+ - side x+/A pin 18: SDA2
+
+The adress of CC1 is 0x55 and the adress of CC2 is 0xAA. To receive the data vector from CC1/2 one has to send the adress of one of the CC and then the register number of the data vector. The strucure of the data vector is shown at the end of the README.
+
 Example of an Arduino sketch used to read out the datavector:  
   CC2_address = 0xAA;
   datavector_reg_numb = 5;
