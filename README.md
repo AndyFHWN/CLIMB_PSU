@@ -44,8 +44,8 @@ Example of an Arduino sketch used to read out the datavector:
 Strucutre of the data vector that is send to the OBC:
 In flight mode the MC creates a data vector with all housekeeping data which is frequently send to the CC1/2 and then further to the OBC. The data vector is created in the function "void CreateDataVector(uint8_t *dataVector)" which is implmented in the file "CCinterface.c".
 The vector is created in firmware of the MC and is structred as follows:
-  dataVector[0] = '$';
-	dataVector[1] = 'D';
+dataVector[0] = '$';
+dataVector[1] = 'D';
 	// 5V VI data
 	dataVector[2] = 'P'; //global_5V.i1Low;
 	dataVector[3] = global_5V.i1High;
