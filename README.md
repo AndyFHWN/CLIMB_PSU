@@ -152,4 +152,4 @@ uart.c:
 - data[81]=uart_string_R[66];						//CC2 FOVR
 - data[82]=uart_string_R[67];						//CC2 OVR
 
-The whole new data vec tor is then send via I2C to the OBC if the I2C interrupt routine is triggered.
+The whole new data vector is then send via I2C to the OBC if the I2C interrupt routine is triggered.
