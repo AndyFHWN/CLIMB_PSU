@@ -150,7 +150,8 @@ The vector is structred as follows:
 - // checksum of byte 0 to 65 via XOR
 - dataVector[68] = dataVector[0];
 
-This data vector with the size of 69 byte is send to the CC1/2. In the firmware of ht CC1/2 the vector is extended to the size of 88 byte and filled with data from CC1/2. In the firmware of CC2 the data vector is extaded as follows:
+This data vector with the size of 69 byte is send to the CC1/2. In the firmware of the CC1/2 the vector is extended to the size of 88 byte and filled with data from CC1/2. e.g. In the firmware of CC2 the data vector is extended as follows:
+
 The dataVector from the MC is received from CC2 via UART byte per byte and saved in a new vector called "data".
 
 main.h:
