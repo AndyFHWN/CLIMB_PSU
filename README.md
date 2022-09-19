@@ -152,7 +152,7 @@ The vector is structred as follows:
 - dataVector[68] = dataVector[0];
 - for(i = 1; i <= CHECKSUM_LIMIT_MC_CC; i++)//Checksum
 - 	{
-- 		dataVector[68] ^= dataVector[i];
+- 	dataVector[68] ^= dataVector[i];
 - 	}
 
 This data vector with the size of 69 byte is send to the CC1/2. In the firmware of the CC1/2 the vector is extended to the size of 88 byte and filled with data from CC1/2. e.g. In the firmware of CC2 the data vector is extended as follows:
