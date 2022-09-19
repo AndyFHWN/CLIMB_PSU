@@ -64,6 +64,7 @@ Example of an Arduino sketch used to read out the datavector:
 
 In flight mode the MC creates a data vector with all housekeeping data which is frequently send to the CC1/2 and then further to the OBC. The data vector is created in the firmware of the MC with the function "void CreateDataVector(uint8_t *dataVector)" which is implmented in the file "CCinterface.c".
 The vector is structred as follows:
+- uint8_t i;//for checksum 
 - dataVector[0] = '$';
 - dataVector[1] = 'D';
 - // 5V VI data
@@ -149,6 +150,10 @@ The vector is structred as follows:
 - dataVector[67] = 0x33;
 - // checksum of byte 0 to 65 via XOR
 - dataVector[68] = dataVector[0];
+- for(i = 1; i <= CHECKSUM_LIMIT_MC_CC; i++)//Checksum
+- 	{
+- 		dataVector[68] ^= dataVector[i];
+- 	}
 
 This data vector with the size of 69 byte is send to the CC1/2. In the firmware of the CC1/2 the vector is extended to the size of 88 byte and filled with data from CC1/2. e.g. In the firmware of CC2 the data vector is extended as follows:
 
