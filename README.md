@@ -3,18 +3,18 @@ Content:
 1) Firmware Main Controller (MC)
 2) Firmware Communication Controller 1/2 (CC1/2)
 3) How to receive data vector from CC1/2 that is send to OBC
-4) Strucutre of the data vector
+4) Structure of the data vector
 
-The PSU consists of three programmable microchips -> three firmware's. The Main controller (MC) and two communictaion controllers (CC's). The CC's are the interface between the MC and the OBC. The MC is connected to both CC's and communicates via UART. The CC's communicate with the OBC via I2C (OBC -> Master, CC's -> Slaves). The MC collects housekeeping data by communicating with all sensors  via I2C. 
+The PSU consists of three programmable microchips -> three firmware's. The Main controller (MC) and two communication controllers (CC's). The CC's are the interface between the MC and the OBC. The MC is connected to both CC's and communicates via UART. The CC's communicate with the OBC via I2C (OBC -> Master, CC's -> Slaves). The MC collects housekeeping data by communicating with all sensors  via I2C. 
 
 (1) Firmware Main Controller (MC):
 
 The firmware of the main controller is responsible for:
 - Converting the power on the PV1 and PV2 bus to 3V3 and 5V.
 - Connecting battery to PV1 or PV2 bus.
-- Gathering of houskeeping data via I2C (power and temperature sensors).
+- Gathering of housekeeping data via I2C (power and temperature sensors).
 
-The firmware holds serveral modes: power up mode, debug mode, boot mode, flight mode, safe mode, power down mode.
+The firmware holds several modes: power up mode, debug mode, boot mode, flight mode, safe mode, power down mode.
 
 - Power up mode: In this mode the PPU checks if the RBF is LOW or HIGH. If it is LOW, the EPS enters the debug mode and if HIGH enters the boot mode.
 - Debug mode: This mode is only for debugging. When entering this mode, the code written in the debug section of the firmware is executed.
@@ -25,7 +25,7 @@ The firmware holds serveral modes: power up mode, debug mode, boot mode, flight 
 
 (2) Firmware Communication Controller 1/2 (CC1/2):
 
-The CC's are the interface between the MC and the OBC. The controllers are in a sleep mode as long no requests occur. The controllers are sending/receiving data between the MC and OBC. The MC creates a data vector with all housekeeping data which is frequently send to the CC1/2 (strucutre of data vector at end of README). The CC1/2 adds its own housekeeping data (Temperature and Vcc) to the datavector and sends it to the OBC via I2C. The OBC itself sends data to the CC1/2 (e.g. turn on 3V3 on side x+) which are then send to the MC. All I2C communication between the CC and the OBC are handled with ISR's.
+The CC's are the interface between the MC and the OBC. The controllers are in a sleep mode as long no requests occur. The controllers are sending/receiving data between the MC and OBC. The MC creates a data vector with all housekeeping data which is frequently send to the CC1/2 (structure of data vector at end of README). The CC1/2 adds its own housekeeping data (Temperature and Vcc) to the datavector and sends it to the OBC via I2C. The OBC itself sends data to the CC1/2 (e.g. turn on 3V3 on side x+) which are then send to the MC. All I2C communication between the CC and the OBC are handled with ISR's.
 The controllers are also capable of connecting battery 1 to PV1 and can enable the 3V3_Backup voltage regulator. The CC2 controller is used as redundancy to the CC1.
 
 Difference between CC1 and CC2:
@@ -46,7 +46,7 @@ CC2:
  - side x+/A pin 17: SCL2
  - side x+/A pin 18: SDA2
 
-The adress of CC1 is 0x55 and the adress of CC2 is 0xAA. To receive the data vector from CC1/2 one has to send the adress of one of the CC and then the register number of the data vector. The strucure of the data vector is shown at the end of the README. The relevant section in the firmware for I2C communiction for CC1 is in the file "InterruptVector_init.c" beginning from line 836 and for CC2 'twi.c" from line 27 on.
+The address of CC1 is 0x55 and the address of CC2 is 0xAA. To receive the data vector from CC1/2 one has to send the address of one of the CC and then the register number of the data vector. The stucture of the data vector is shown at the end of the README. The relevant section in the firmware for I2C communication for CC1 is in the file "InterruptVector_init.c" beginning from line 836 and for CC2 'twi.c" from line 27 on.
 
 Example of an Arduino sketch used to read out the datavector:  
   CC2_address = 0xAA;
@@ -60,10 +60,10 @@ Example of an Arduino sketch used to read out the datavector:
   
   The variable "datavector" contains now the 5th byte of the received data vector from CC2.
 
-(4) Strucutre of the data vector that is send to the OBC:
+(4) Structure of the data vector that is send to the OBC:
 
-In flight mode the MC creates a data vector with all housekeeping data which is frequently send to the CC1/2 and then further to the OBC. The data vector is created in the firmware of the MC with the function "void CreateDataVector(uint8_t *dataVector)" which is implmented in the file "CCinterface.c".
-The vector is structred as follows:
+In flight mode the MC creates a data vector with all housekeeping data which is frequently send to the CC1/2 and then further to the OBC. The data vector is created in the firmware of the MC with the function "void CreateDataVector(uint8_t *dataVector)" which is implemented in the file "CCinterface.c".
+The vector is structured as follows:
 - uint8_t i;//for checksum 
 - dataVector[0] = '$';
 - dataVector[1] = 'D';
